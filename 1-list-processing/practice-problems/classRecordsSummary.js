@@ -113,9 +113,10 @@ function finalStudentGrade(studentScores) {
 }
 
 function generateExamObject(examScores) {
-  const averageScore = (scores) => (scores.reduce((total, score) => total + score) / scores.length);
+  const averageScore = (scores) =>
+    scores.reduce((total, score) => total + score) / scores.length
   const minScore = (scores) => Math.min(...scores)
-  const maxScore = (scores) => Math.max(...scores);
+  const maxScore = (scores) => Math.max(...scores)
 
   return examScores.map((exam) => {
     return {
@@ -134,13 +135,11 @@ function generateClassRecordSummary(scores) {
   const studentScores = Object.keys(scores).map(
     (student) => scores[student].scores
   )
-  const examData = transpose(
-    Object.keys(scores).map((student) => scores[student].scores.exams)
-  )
+  const examScores = transpose(studentScores.map((student) => student.exams))
 
   return {
     studentGrades: studentScores.map((student) => finalStudentGrade(student)),
-    exams: generateExamObject(examData),
+    exams: generateExamObject(examScores),
   }
 }
 
