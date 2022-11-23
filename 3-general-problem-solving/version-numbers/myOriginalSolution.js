@@ -39,11 +39,31 @@ Algorithm:
 
 */
 
+function validInput(input) {
+  if (!input.split('').every((char) => char.match(/[0-9\.]/))) {
+    return false
+  }
+
+  if (input.match(/\.\./)) {
+    return false
+  }
+
+  if (!input[0].match(/[0-9]/)) {
+    return false
+  }
+
+  return true
+}
+
 function compareVersions(version1, version2) {
   const digits1 = version1.split('.')
   const digits2 = version2.split('.')
   const sorted = [digits1, digits2].sort((a, b) => b.length - a.length)
-  let larger;
+  let larger
+
+  if (!validInput(version1) || !validInput(version2)) {
+    return null
+  }
 
   for (let idx = 0; idx < sorted[0].length; idx += 1) {
     if (sorted[1][idx]) {
@@ -62,7 +82,6 @@ function compareVersions(version1, version2) {
     }
   }
 
-
   if (larger === digits1) {
     return 1
   } else if (larger === digits2) {
@@ -78,3 +97,6 @@ console.log(compareVersions('1.1', '1.2')) // -1
 console.log(compareVersions('1.2', '1.2.0.0')) // 0
 console.log(compareVersions('1.18.2', '1.2.0.0')) // 1
 console.log(compareVersions('1.18.2', '13.37')) // -1
+console.log(compareVersions('1.18.2', 'abcdefg')) // null
+console.log(compareVersions('.1.18', '1.18'));
+console.log(compareVersions('1..18', '1.15'));
