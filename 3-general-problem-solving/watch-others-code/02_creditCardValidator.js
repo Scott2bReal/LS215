@@ -60,7 +60,7 @@ function doubleAlternating(numArray) {
     }
 
     return digit
-  }).reverse();
+  });
 }
 
 function luhnChecker(numString) {
