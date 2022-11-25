@@ -22,7 +22,7 @@ Questions:
   - Should this return a string like in the examples, or the full range (no '...')?
 
 Requirements:
-  - Commas separate individual numbers
+  - Commas separate ranges
   - Other provided separators represent ranges
 
 Input: string
@@ -33,16 +33,32 @@ Data Structure: Array
 Algorithm:
   - Define individual separator and range separators
   - Init final array
-  - Split input by individual sep
-  - For each element in resulting array
-    - If element does not contain range sep, add to final array as number
-    - Else
-      - Create range
+  - Split input by individual sep (',')
+  - For each range in resulting array of ranges (with index)
+    - Split range by range separator
+    - For each element of that range array
+      - If ranges index is 0, initialize counter to first element of that range array as a number
+      - Add counter (as string) to final array
+      - increment counter by 1
+      - Else
+        - Check if counter as string meets regex for next item in range array
+        - If it does, add counter as string to final array and break
+        - If not, add counter as string to final array and continue
+
+  - Return final array joined
 */
 
+RANGES_SEPARATOR = ','
+RANGE_SEPARATOR = /(\:|\-|..)/g
 
 function rangeInterpreter(originalString) {
-  // ...
+  const finalArray = [];
+  const ranges = originalString.split(RANGES_SEPARATOR);
+
+  ranges.forEach((range) => {
+    const boundaries = range.split(RANGE_SEPARATOR);
+    console.log(boundaries)
+  })
 }
 
 // Examples
