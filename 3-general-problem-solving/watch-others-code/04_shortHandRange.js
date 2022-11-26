@@ -31,12 +31,14 @@ Output: string
 Data Structure: Array
 
 Algorithm:
+
   - Define individual separator and range separators
   - Init final array
   - Split input by individual sep (',')
   - For each range in resulting array of ranges (with index)
     - Split range by range separator
     - For each element of that range array
+      loop
       - If ranges index is 0, initialize counter to first element of that range array as a number
       - Add counter (as string) to final array
       - increment counter by 1
@@ -48,16 +50,18 @@ Algorithm:
   - Return final array joined
 */
 
-RANGES_SEPARATOR = ','
-RANGE_SEPARATOR = /(\:|\-|..)/g
+RANGES_SEPARATOR = ', '
+RANGE_SEPARATOR = /[\:\-..\s]/g
 
 function rangeInterpreter(originalString) {
   const finalArray = [];
   const ranges = originalString.split(RANGES_SEPARATOR);
+  console.log('ranges: ', ranges)
 
-  ranges.forEach((range) => {
+  ranges.forEach((range, rangeIdx) => {
     const boundaries = range.split(RANGE_SEPARATOR);
-    console.log(boundaries)
+
+
   })
 }
 
