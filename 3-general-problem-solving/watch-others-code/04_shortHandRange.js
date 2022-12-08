@@ -36,6 +36,9 @@ Algorithm:
   - Init final array
   - Split input by individual sep (',')
 
+  - Finding range boundaries:
+    - If length of range is 2, start and end are obvious
+
   - Map resulting array into expanded ranges (nested array)
     - if element includes range sep, expand range
     - if not, just return char
@@ -55,6 +58,8 @@ RANGE_SEPARATOR = /[\:\-..\s]/g
 
 function rangeBoundaries(rangeString) {
   const range = rangeString.split(RANGE_SEPARATOR)
+  const length = range.length
+  const start = range[0]
   return [range[0], range[1]]
 }
 
