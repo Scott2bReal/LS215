@@ -50,3 +50,4 @@ console.log(fibonacci(4));       // 3
 console.log(fibonacci(5));       // 5
 console.log(fibonacci(12));      // 144
 console.log(fibonacci(20));      // 6765
+console.log(fibonacci(40));

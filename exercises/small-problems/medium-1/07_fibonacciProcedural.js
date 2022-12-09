@@ -17,25 +17,33 @@
 
 /*
 Algorithm:
-  - init sum
-  - init current
-  - init last digit
-  - sum += current
-  - last digit = sum
+  - Start on third digit
+  - One back is 1
+  - Current is 2
+  - init swap variable
 */
 
 function fibonacci(num) {
-  let sum = 0;
-  let counter = 0;
-  let lastDigit = 0;
-  let current = 1;
+  if (num < 3) return 1;
 
-  while (counter < num) {
-    sum += current
+  let currentDigit = 3;
+  let swap = 0;
+  let oneBack = 1;
+  let current = 2;
 
+  while (currentDigit < num) {
+    swap = current;
+    current += oneBack;
+    oneBack = swap;
+    currentDigit += 1;
   }
+
+  return current;
 }
 
+console.log(fibonacci(1));        // 1
+console.log(fibonacci(2));        // 1
+console.log(fibonacci(3));        // 2
 console.log(fibonacci(20));       // 6765
 console.log(fibonacci(50));       // 12586269025
 console.log(fibonacci(75));       // 2111485077978050
