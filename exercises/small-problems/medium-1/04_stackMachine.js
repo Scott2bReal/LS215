@@ -48,8 +48,12 @@
 let register = 0;
 const stack = [];
 
+function setRegister(value) {
+  register = value;
+}
+
 function print() {
-  console.log(register)
+  console.log(register);
 }
 
 function push() {
@@ -69,7 +73,7 @@ function mult() {
 }
 
 function div() {
-  register /= stack.pop()
+  register = Math.floor(register / stack.pop());
 }
 
 function remainder() {
@@ -81,11 +85,29 @@ function pop() {
 }
 
 function splitCommands(commandString) {
-  // ...
+  return commandString.split(' ');
 }
 
 function execute(command) {
-
+  if (command.match(/[0-9]/)) {
+    setRegister(Number(command))
+  } else if (command === 'PRINT') {
+    print()
+  } else if (command === 'PUSH') {
+    push();
+  } else if (command === 'ADD') {
+    add();
+  } else if (command === 'SUB') {
+    sub();
+  } else if (command === 'MULT') {
+    mult();
+  } else if (command === 'DIV') {
+    div();
+  } else if (command === 'REMAINDER') {
+    remainder();
+  } else if (command === 'POP') {
+    pop();
+  }
 }
 
 function minilang(commandString) {
