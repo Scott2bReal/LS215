@@ -25,8 +25,8 @@ function completeTasks(n = 1) {
   let tasksComplete = 0;
 
   while (todos.length > 0 && tasksComplete < n) {
-    console.log(`${todos[0]} complete!`);
-    delete todos[0];
+    console.log(`${todos.shift()} complete!`);
+    // delete todos[0];
     tasksComplete++;
   }
 
@@ -48,7 +48,7 @@ function displayTaskList() {
 
 // Utilizing our task manager
 
-displayTaskList()
+// displayTaskList()
 
 addTask('oil change');
 addTask('dentist');
@@ -56,3 +56,6 @@ addTask('homework');
 
 completeTasks(3);
 displayTaskList();
+
+// This doesn't work correctly because of the use of `delete`. We should
+// instead shift an item from the list.
