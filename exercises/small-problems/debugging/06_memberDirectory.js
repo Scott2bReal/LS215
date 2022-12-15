@@ -22,7 +22,8 @@ const memberDirectory = {
 };
 
 function isValidName(name) {
-  return (/^\w+ \w+$/).test(name);
+  // return (/^\w+ \w+$/).test(name);
+  return (/^[A-Za-z]+ [A-Za-z]+$/).test(name);
 }
 
 function isValidPhone(phone) {
@@ -44,5 +45,9 @@ function addMember(name, phone) {
 addMember('Laura Carlisle', '444-2223');
 addMember('Rachel Garcia', '232-1191');
 addMember('Earl 5mith', '331-9191');
+addMember('Scott Hoecker_', '346-4092')
 
 console.log(memberDirectory);
+
+// The regex in isValidName will allow underscores and digits in people's
+// names. We should change that out for one that only counts letters
