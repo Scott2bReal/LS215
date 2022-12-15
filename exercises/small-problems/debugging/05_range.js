@@ -7,7 +7,7 @@
 // saying Maximum call stack size exceeded? Can you fix the code, so it runs
 // without error and satisfies the requirements?
 
-function range(start, end) {
+function fullRange(start, end) {
   const range = [];
 
   for (let element = start; element <= end; element++) {
@@ -18,10 +18,18 @@ function range(start, end) {
 }
 
 function range(end) {
-  return range(0, end);
+  if (arguments.length === 2) {
+    return fullRange(arguments[0], arguments[1])
+  }
+
+  return fullRange(0, end);
 }
 
 // Examples
 
 console.log(range(10, 20));
 console.log(range(5));
+
+// This creates an endless loop since the two functions have the same name! We
+// should rename the first range declaration to something else, and things
+// should work as expected.
