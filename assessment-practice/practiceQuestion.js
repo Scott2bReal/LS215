@@ -52,8 +52,77 @@ Algorithm:
 //   // ...
 // }
 
-const max = (...args) => {
-  console.log(args.flat(Infinity))
+function sortAsc(a, b) {
+  if (a < b) {
+    return -1
+  } else if (a > b) {
+    return 1
+  } else {
+    return 0
+  }
+}
+
+function sortDesc(a, b) {
+  if (a > b) {
+    return -1
+  } else if (a < b) {
+    return 1
+  } else {
+    return 0
+  }
+}
+
+function max(...args) {
+  if (args.length === 0) {
+    console.log(0)
+    return 0;
+  }
+
+  const flatArgs = args.flat(Infinity)
+  const results = [];
+
+  for (let i = 0; i < flatArgs.length; i++) {
+    const element = flatArgs[i]
+    if (Number.isNaN(Number(element))) {
+      return NaN
+    } else {
+      results.push(Number(element))
+    }
+  }
+
+  if (results.length === 0) {
+    console.log(0)
+    return 0;
+  }
+
+  return results.sort(sortDesc)[0]
+}
+
+
+function min(...args) {
+  if (args.length === 0) {
+    console.log(0)
+    return 0;
+  }
+
+  const flatArgs = args.flat(Infinity)
+  const results = [];
+
+  for (let i = 0; i < flatArgs.length; i++) {
+    const element = flatArgs[i]
+    if (Number.isNaN(Number(element))) {
+      return NaN
+    } else {
+      results.push(Number(element))
+    }
+  }
+
+  if (results.length === 0) {
+    console.log(0)
+    return 0;
+  }
+
+  return results.sort(sortAsc)[0]
 }
 
 // Example
